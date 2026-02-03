@@ -1,117 +1,126 @@
-/* General Reset & Layout */
-html {
-    height: 100%;
-    margin: 0;
+/* General Reset */
+* {
+    box-sizing: border-box;
 }
 
 body {
-    /* Combined your gradient and background image for better performance */
-    background: linear-gradient(to bottom, #d2f96f84, #1f1f1fb1, #0e100a83, #a2a2a276, #ffffff8d),url(https://i.pinimg.com/1200x/27/8e/a8/278ea85ceebe2dd36f8f0f37ac25a2bf.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
     margin: 0;
-    padding: 20px;
-    font-family: sans-serif;
-}
-/* Typography */
-h1 {
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 800;
-}
-
-.animated-text {
-    margin: 20px auto; /* Centered instead of fixed margin-left */
-    text-align: center;
-    font-family: unset;
-    font-size: clamp(2rem, 8vw, 5rem); /* Responsive font size */
-    cursor: pointer;
-    width: 100%;
-}
-
-/* Header Section */
-#header {
-    background-image: url(https://i.pinimg.com/736x/ca/42/32/ca423219fc5e6e8a89d3589918870fc0.jpg);
+    min-height: 100vh;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://i.pinimg.com/1200x/05/f3/c5/05f3c507293a2b4864b3455aabedecb2.jpg');
     background-size: cover;
-    width: 90%;
-    max-width: 400px; /* Limits width on desktop */
-    margin: 20px auto; /* Centers the header */
-    padding: 15px;
-    border-radius: 10px;
-    color: whitesmoke;
-}
-
-/* Responsive Masonry Grid */
-#main-page {
-    width: 100%;
-    column-gap: 20px;
-    column-count: 5; /* Default for large screens */
-}
-.palette-item {
-    display: inline-block; 
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-}
-
-img {     
-    border-radius: 20px;
-    width: 100%; 
-    display: block;
-    cursor: pointer;
-}
-
-.palette-item:hover {
-    transform: scale(1.03); 
-    filter: brightness(1.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
-}
-
-.caption {
+    background-position: center;
+    background-attachment: fixed;
     color: white;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    overflow-x: hidden;
 }
 
-/* Footer */
-#footer {
-    background-image:linear-gradient(to bottom,rgba(245, 245, 245, 0)),url(https://i.pinimg.com/736x/1b/7d/72/1b7d72feca398bfbad2916f1ecf25a87.jpg);
-    opacity: .5;
-    background-size: cover;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 40px;
+/* Responsive Navigation */
+#nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    flex-wrap: wrap;
 }
 
-#footer a, #footer p {
-    text-align: center;
+#company-name a {
+    color: #f5deb3;
+    font-weight: 700;
+    font-size: 2.5rem;
     text-decoration: none;
+    text-shadow: 0 0 10px rgba(245, 222, 179, 0.5);
+}
+
+#options a {
+    margin-left: 20px;
     color: whitesmoke;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+#options a:hover { color: cyan; }
+
+/* Hero Section */
+#container {
+    padding: 2rem 5%;
+    text-align: center;
+}
+
+h1 { font-size: clamp(2rem, 8vw, 4rem); margin-bottom: 0; }
+h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); font-weight: 300; margin-top: 0.5rem; }
+
+span {
+    font-family: 'Dancing Script', cursive;
+    color: #00f2ff;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.7);
+}
+
+/* Electric Button */
+#button-wrapper { margin: 2rem 0; }
+
+.cta-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.cta-btn a { text-decoration: none; color: black; font-weight: bold; }
+
+/* Image Grid & Electric Border Effect */
+#image-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    /* flex-wrap: wrap; */
+    margin-top: 3rem;
+}
+
+.img-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    /* This creates the "Electric" border glow */
+    padding: 3px; 
+    background: linear-gradient(90deg, #00f2ff, #ff00de, #00f2ff);
+    background-size: 200% 200%;
+    animation: electric-glow 3s linear infinite;
+}
+#footer{
+    text-align: center;
+}
+@keyframes electric-glow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.img-card img {
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-li { list-style: none; }
-/* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
-    #main-page { column-count: 4; }
-}
+/* Staggered Heights (Responsive) */
+.card-1, .card-5 { width: 180px; height: 280px; margin-top: 40px; }
+.card-2, .card-4 { width: 220px; height: 320px; margin-top: 20px; }
+.card-3 { width: 260px; height: 380px; }
 
-@media (max-width: 992px) {
-    #main-page { column-count: 3; }
-}
-
+/* Mobile View Adjustment */
 @media (max-width: 768px) {
-    #main-page { column-count: 2; }
-    .animated-text { margin-left: 0; }
+    #image-grid { gap: 1rem; }
+    .img-card { width: 140px !important; height: 200px !important; margin-top: 0 !important; }
+    #nav-container { justify-content: center; flex-direction: column; gap: 10px; }
 }
-
-@media (max-width: 480px) {
-    #main-page { column-count: 1; }
-}
-
-/* Gallery Items */
