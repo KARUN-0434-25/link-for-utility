@@ -2,20 +2,17 @@
 * {
     box-sizing: border-box;
 }
-
 body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Space Grotesk', sans-serif;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://i.pinimg.com/1200x/05/f3/c5/05f3c507293a2b4864b3455aabedecb2.jpg');
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url('https://i.pinimg.com/1200x/05/f3/c5/05f3c507293a2b4864b3455aabedecb2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
     overflow-x: hidden;
 }
-
 /* Responsive Navigation */
 #nav-container {
     display: flex;
@@ -24,7 +21,6 @@ body {
     padding: 1rem 5%;
     flex-wrap: wrap;
 }
-
 #company-name a {
     color: #f5deb3;
     font-weight: 700;
@@ -32,7 +28,6 @@ body {
     text-decoration: none;
     text-shadow: 0 0 10px rgba(245, 222, 179, 0.5);
 }
-
 #options a {
     margin-left: 20px;
     color: whitesmoke;
@@ -40,9 +35,7 @@ body {
     font-size: 1.1rem;
     transition: color 0.3s;
 }
-
 #options a:hover { color: cyan; }
-
 /* Hero Section */
 #container {
     padding: 2rem 5%;
@@ -57,10 +50,8 @@ span {
     color: #00f2ff;
     text-shadow: 0 0 15px rgba(0, 242, 255, 0.7);
 }
-
 /* Electric Button */
 #button-wrapper { margin: 2rem 0; }
-
 .cta-btn {
     padding: 1rem 2.5rem;
     border-radius: 50px;
@@ -69,14 +60,11 @@ span {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .cta-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
-
 .cta-btn a { text-decoration: none; color: black; font-weight: bold; }
-
 /* Image Grid & Electric Border Effect */
 #image-grid {
     display: flex;
@@ -86,7 +74,6 @@ span {
     /* flex-wrap: wrap; */
     margin-top: 3rem;
 }
-
 .img-card {
     position: relative;
     border-radius: 15px;
@@ -104,7 +91,6 @@ span {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
 }
-
 .img-card img {
     display: block;
     width: 100%;
@@ -112,12 +98,10 @@ span {
     object-fit: cover;
     border-radius: 12px;
 }
-
 /* Staggered Heights (Responsive) */
 .card-1, .card-5 { width: 180px; height: 280px; margin-top: 40px; }
 .card-2, .card-4 { width: 220px; height: 320px; margin-top: 20px; }
 .card-3 { width: 260px; height: 380px; }
-
 /* Mobile View Adjustment */
 @media (max-width: 768px) {
     #image-grid { gap: 1rem; }
