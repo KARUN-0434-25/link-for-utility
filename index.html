@@ -3,42 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CopyGrady | Electric Gradients</title>
+    <title>CopyGrady | Premium Gradients</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header id="header">
         <nav id="nav-container">
-            <div id="company-name">
-                <a href="#">CopyGrady</a>
+            <div id="logo">
+                <a href="index.html">CopyGrady</a>
             </div>
             <div id="options">
-                <a href="how-to-use.html">How To Use</a>
-                <!-- <a href="#">Add-Request</a> -->
+                <a href="how-to-use.html" class="nav-link">How To Use</a>
             </div>
         </nav>
     </header>
+
     <main id="container">
-        <div id="wording">
+        <section id="hero-content">
             <h1>Ready-to-use <span>Gradients</span></h1> 
-            <h2>for your every project!</h2>
-        </div>
+            <h2>Premium CSS transitions for modern interfaces.</h2>
+            
+            <div id="button-wrapper">
+                <a href="Get-You-Choice.html" class="cta-btn" onclick="pageTransition(event, 'Get-You-Choice.html')">
+                    GET YOUR CHOICE
+                </a>
+            </div>
+        </section>
 
-        <div id="button-wrapper">
-            <button class="cta-btn"><a href="Get-You-Choice.html">GET YOUR CHOICE</a></button>
-        </div>
-
-        <div id="image-grid">
-            <div class="img-card card-1"><img src="https://i.pinimg.com/736x/a3/59/fa/a359fa2b378ea48018786ccc9350298d.jpg" alt="gradient 1"/></div>
-            <div class="img-card card-2"><img src="https://i.pinimg.com/736x/8c/e8/8f/8ce88fc7173394234477c45503d93988.jpg" alt="gradient 2"/></div>
-            <div class="img-card card-3"><img src="https://i.pinimg.com/1200x/cf/d8/58/cfd85800cf427d7cc42a9ade01205389.jpg" alt="gradient 3"/></div>
-            <div class="img-card card-4"><img src="https://i.pinimg.com/736x/8c/e8/8f/8ce88fc7173394234477c45503d93988.jpg" alt="gradient 4"/></div>
-            <div class="img-card card-5"><img src="https://i.pinimg.com/736x/ca/e5/0f/cae50f94a08cb45feeaa7e35e24365b6.jpg" alt="gradient 5"/></div>
-        </div>
+        <section id="image-grid">
+            <div class="img-card card-1"><img src="https://i.pinimg.com/736x/a3/59/fa/a359fa2b378ea48018786ccc9350298d.jpg" alt="gradient 1"></div>
+            <div class="img-card card-2"><img src="https://i.pinimg.com/736x/8c/e8/8f/8ce88fc7173394234477c45503d93988.jpg" alt="gradient 2"></div>
+            <div class="img-card card-3"><img src="https://i.pinimg.com/1200x/cf/d8/58/cfd85800cf427d7cc42a9ade01205389.jpg" alt="gradient 3"></div>
+            <div class="img-card card-4"><img src="https://i.pinimg.com/736x/8c/e8/8f/8ce88fc7173394234477c45503d93988.jpg" alt="gradient 4"></div>
+            <div class="img-card card-5"><img src="https://i.pinimg.com/736x/ca/e5/0f/cae50f94a08cb45feeaa7e35e24365b6.jpg" alt="gradient 5"></div>
+        </section>
     </main>
-    <div id="footer">
-        <p>Copyright ©️ 2026. CopyGrady</p>
+
+    <footer id="footer">
+        <p>&copy; 2026 CopyGrady. All rights reserved.</p>
+    </footer>
+
+    <div id="developer-badge">
+        Built by <a href="#">Raju</a>
     </div>
+
+    <script>
+        function pageTransition(e, url) {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = url;
+            }, 400);
+        }
+    </script>
 </body>
 </html>
