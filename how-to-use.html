@@ -25,6 +25,7 @@
             min-height: 100vh;
             background-color: var(--dark-blue);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -32,7 +33,7 @@
             position: relative;
         }
 
-        /* Ocean Background Effects */
+        /* Background Effects */
         .ocean-bg {
             position: fixed;
             top: 0; left: 0;
@@ -56,6 +57,10 @@
             max-width: 600px;
             width: 100%;
             z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .header {
@@ -113,49 +118,62 @@
             margin-bottom: 15px;
         }
 
-        .dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
+        .dots { display: flex; gap: 6px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
         .red { background: #ff5f56; }
         .yellow { background: #ffbd2e; }
         .green { background: #27c93f; }
+        .status-dot { width: 12px; height: 12px; background: rgba(39, 201, 63, 0.2); border-radius: 50%; }
 
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(39, 201, 63, 0.2);
-            border-radius: 50%;
-        }
-
-        .code-content {
-            color: #d1d4d8;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .highlight {
-            color: #e06c75;
-            font-weight: bold;
-        }
-
+        .code-content { color: #d1d4d8; font-size: 0.9rem; line-height: 1.6; }
+        .highlight { color: #e06c75; font-weight: bold; }
         .tag { color: #61afef; }
         .attr { color: #98c379; }
 
-        /* Animations & Responsive */
+        /* Footer & Button Styling */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            z-index: 10;
+        }
+
+        .footer-credit {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--terminal-bg);
+            border: 1px solid var(--glass-border);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            outline: none;
+        }
+
+        .footer-credit span { color: var(--primary); font-weight: bold; }
+        .footer-credit:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: #323741;
+            border-color: var(--primary);
+        }
+
+        /* Animations */
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
         @media (max-width: 500px) {
             .step-card { flex-direction: column; padding: 20px; }
+            .footer-credit { bottom: 80px; right: 20px; } /* Adjust for mobile copyright */
         }
     </style>
 </head>
@@ -173,21 +191,14 @@
         <div class="step-card" style="animation-delay: 0.2s;">
             <div class="step-num">1</div>
             <div class="step-body" style="width: 100%;">
-                <h3 style="color: white; margin-bottom: 5px;">Select the Gradients you love.</h3>
+                <h3 style="color: white; margin-bottom: 5px;">Select the Gradients</h3>
                 <p style="color: #eee; font-size: 0.9rem;">Copy Hex Codes</p>
-                
                 <div class="code-container">
                     <div class="terminal-header">
-                        <div class="dots">
-                            <div class="dot red"></div>
-                            <div class="dot yellow"></div>
-                            <div class="dot green"></div>
-                        </div>
+                        <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
                         <div class="status-dot"></div>
                     </div>
-                    <div class="code-content">
-                        <span class="tag">#003b5c, #0076a8, #0095d9</span>
-                    </div>
+                    <div class="code-content"><span class="tag">#003b5c, #0076a8, #0095d9</span></div>
                 </div>
             </div>
         </div>
@@ -196,26 +207,27 @@
             <div class="step-num">2</div>
             <div class="step-body" style="width: 100%;">
                 <h3 style="color: white; margin-bottom: 5px;">Paste into Property</h3>
-                <p style="color: #eee; font-size: 0.9rem;">Insert values into the linear-gradient.</p>
-                
+                <p style="color: #eee; font-size: 0.9rem;">Insert values into linear-gradient</p>
                 <div class="code-container">
                     <div class="terminal-header">
-                        <div class="dots">
-                            <div class="dot red"></div>
-                            <div class="dot yellow"></div>
-                            <div class="dot green"></div>
-                        </div>
+                        <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
                         <div class="status-dot"></div>
                     </div>
                     <div class="code-content">
                         <span class="attr">body</span> { <br>
-                        &nbsp;&nbsp;background: linear-gradient(<span class="highlight"><--Paste That #code here--></span>); <br>
+                        &nbsp;&nbsp;background: linear-gradient(<span class="highlight">&lt;--Paste Hex Here--&gt;</span>); <br>
                         }
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <button class="footer-credit" type="button">Built by <span>Arunesh</span></button>
+
+    <footer>
+        &copy; 2026  CopyGrady. All rights reserved.
+    </footer>
+
 </body>
-</html>
 </html>
