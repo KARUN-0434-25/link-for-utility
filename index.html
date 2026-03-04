@@ -4,19 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CopyGrady | Premium Gradients</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cyan colors from image_0.png for the roaming borders */
+            --roaming-cyan-bright: #00e5ff; /* Cyan from '01' */
+            --roaming-cyan-border: #1a73e8; /* Blue-cyan from border */
+            
+            --electric-pink: #ff00de;
+            --pure-black: #000000;
+            --grid-color: rgba(0, 242, 255, 0.15); 
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--pure-black);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        #nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 10;
+        }
+
+        #logo a {
+            color: #f5deb3;
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-decoration: none;
+        }
+
+        .nav-link {
+            color: #bbb;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link:hover {
+            color: var(--roaming-cyan-bright);
+            border-color: var(--roaming-cyan-bright);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        #container {
+            flex: 1;
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        #hero-content { margin-bottom: 6rem; text-align: center; }
+
+        h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); margin-bottom: 10px; }
+        h1 span { 
+            font-family: 'Dancing Script', cursive; 
+            background: linear-gradient(90deg, var(--roaming-cyan-bright), #ff00de);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 { font-weight: 300; color: #888; margin-bottom: 4rem; }
+
+        /* CTA Button - Cyan-based hover to match border */
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-btn:hover {
+            color: var(--roaming-cyan-bright); 
+            border-color: var(--roaming-cyan-bright);
+            background: rgba(0, 229, 255, 0.1);
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.5);
+            transform: translateY(-3px);
+            letter-spacing: 1px;
+        }
+
+        /* Image Grid - Updated for 4 items */
+        #image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        /* preserved: Roaming Border Container with new colors */
+        .img-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden; 
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px; 
+        }
+
+        /* updated: DUAL ROAMING BORDER with colors from image_0.png */
+        .img-card::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            /* Colors from image_0.png: Bright Cyan '01' and Blue-cyan border */
+            background: conic-gradient(
+                transparent 0deg, 
+                var(--roaming-cyan-bright) 40deg, /* Color from '01' */
+                transparent 150deg, 
+                transparent 180deg, 
+                var(--roaming-cyan-border) 220deg, /* Color from border */
+                transparent 330deg
+            );
+            animation: rotate-border 4s linear infinite;
+        }
+
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* replacement: The gradient placeholder boxes */
+        .gradient-placeholder {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            border-radius: 17px;
+            z-index: 1;
+            position: relative;
+            /* subtle inner shadow for depth */
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        
+        /* Subtle interactive scale for the internal gradient */
+        .img-card:hover .gradient-placeholder {
+            transform: scale(1.02);
+        }
+
+        /* GRADIENT PALETTES */
+        .pal-1 { background: radial-gradient(circle at top left, #D2F96F, #1F1F1F, #0E100A); }
+        .pal-2 { background: linear-gradient(135deg, #3D1F1D, #A73728, #DF643F); }
+        .pal-3 { background: linear-gradient(to bottom right, #222831, #283b48, #00a6c0, #D8d7cc); }
+        .pal-4 { background: conic-gradient(#362D25, #504736, #6A5E44, #8E7B59, #A59867, #362D25); }
+
+        /* Staggered Layout for 4 items */
+        @media (min-width: 900px) {
+            #image-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+            .card-1, .card-4 { transform: translateY(30px); }
+            .card-2, .card-3 { transform: translateY(0px); }
+        }
+
+        #footer { padding: 4rem 0 2.5rem; text-align: center; color: #333; }
+        
+        #developer-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            border: 1px solid var(--grid-color);
+            z-index: 9999;
+        }
+        #developer-badge a { color: var(--roaming-cyan-bright); text-decoration: none; font-weight: 700; }
+
+        @media (max-width: 600px) {
+            #nav-container { flex-direction: column; gap: 1.5rem; }
+            #image-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .card-1, .card-2, .card-3, .card-4 { transform: none; }
+        }
+    </style>
 </head>
 <body>
 
     <header id="header">
         <nav id="nav-container">
-            <div id="logo">
-                <a href="index.html">CopyGrady</a>
-            </div>
-            <div id="options">
-                <a href="how-to-use.html" class="nav-link">How To Use</a>
-            </div>
+            <div id="logo"><a href="index.html">CopyGrady</a></div>
+            <div id="options"><a href="how-to-use.html" class="nav-link">How To Use</a></div>
         </nav>
     </header>
 
@@ -24,20 +222,16 @@
         <section id="hero-content">
             <h1>Ready-to-use <span>Gradients</span></h1> 
             <h2>Premium CSS transitions for modern interfaces.</h2>
-            
             <div id="button-wrapper">
-                <a href="Get-You-Choice.html" class="cta-btn" onclick="pageTransition(event, 'Get-You-Choice.html')">
-                    GET YOUR CHOICE
-                </a>
+                <a href="Get-You-Choice.html" class="cta-btn">GET YOUR CHOICE</a>
             </div>
         </section>
 
         <section id="image-grid">
-            <div class="img-card card-1"><img src="https://i.pinimg.com/736x/a3/59/fa/a359fa2b378ea48018786ccc9350298d.jpg" alt="gradient 1"></div>
-            <div class="img-card card-2"><img src="https://i.pinimg.com/736x/8c/e8/8f/8ce88fc7173394234477c45503d93988.jpg" alt="gradient 2"></div>
-            <div class="img-card card-3"><img src="https://i.pinimg.com/1200x/cf/d8/58/cfd85800cf427d7cc42a9ade01205389.jpg" alt="gradient 3"></div>
-            <div class="img-card card-4"><img src="https://i.pinimg.com/736x/8c/e8/8f/8ce88fc7173394234477c45503d93988.jpg" alt="gradient 4"></div>
-            <div class="img-card card-5"><img src="https://i.pinimg.com/736x/ca/e5/0f/cae50f94a08cb45feeaa7e35e24365b6.jpg" alt="gradient 5"></div>
+            <div class="img-card card-1"><div class="gradient-placeholder pal-1"></div></div>
+            <div class="img-card card-2"><div class="gradient-placeholder pal-2"></div></div>
+            <div class="img-card card-3"><div class="gradient-placeholder pal-3"></div></div>
+            <div class="img-card card-4"><div class="gradient-placeholder pal-4"></div></div>
         </section>
     </main>
 
@@ -49,14 +243,5 @@
         Built by <a href="#">Arunesh</a>
     </div>
 
-    <script>
-        function pageTransition(e, url) {
-            e.preventDefault();
-            document.body.classList.add('fade-out');
-            setTimeout(() => {
-                window.location.href = url;
-            }, 400);
-        }
-    </script>
 </body>
 </html>

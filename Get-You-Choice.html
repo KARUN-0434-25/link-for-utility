@@ -14,13 +14,22 @@ html, body {
 }
 
 body {
-    background-image:
-        linear-gradient(45deg,#221620,#44141A,#a3242848,#fd829021,#4c8fc63b,#272F46),
-        url(https://i.pinimg.com/1200x/f6/f0/cd/f6f0cdbb0cc1a697f56d4a2a0f60b24e.jpg);
-    background-repeat: no-repeat;
+    /* Less black, more "Smoky Orange & Charcoal" */
+    background-color: #1a1514; 
+    background-image: 
+        /* Distinct Black Grid Lines */
+        linear-gradient(rgba(0, 0, 0, 0.6) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.6) 1px, transparent 1px),
+        /* Warm Ambient Glows */
+        radial-gradient(circle at 10% 20%, rgba(167, 55, 40, 0.3), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(223, 100, 63, 0.25), transparent 40%),
+        /* Base Gradient */
+        linear-gradient(135deg, #1f1c1b 0%, #3d1f1d 100%);
+    
+    background-size: 45px 45px, 45px 45px, 100% 100%, 100% 100%, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-size: cover;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -32,14 +41,14 @@ body {
     top: -60px;
     left: 50%;
     transform: translateX(-50%);
-    background: #00f2ff;
-    color: #000;
+    background: #df643f; /* Matched to theme */
+    color: #fff;
     padding: 10px 25px;
     border-radius: 50px;
     font-weight: bold;
     z-index: 10000;
     transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(223, 100, 63, 0.3);
 }
 #toast.show { top: 20px; }
 
@@ -52,11 +61,14 @@ header { padding: 10px 0 30px 0; }
     padding: 10px 20px;
     border-radius: 50px;
     font-weight: bold;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     transition: 0.3s;
 }
-.back-btn:hover { background: rgba(255, 255, 255, 0.2); }
+.back-btn:hover { 
+    background: rgba(223, 100, 63, 0.2); 
+    border-color: #df643f;
+}
 
 #main-page { column-count: 5; column-gap: 20px; flex: 1; }
 
@@ -64,25 +76,27 @@ header { padding: 10px 0 30px 0; }
     break-inside: avoid;
     margin-bottom: 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(35, 30, 30, 0.6); /* Semi-transparent charcoal */
     padding: 15px;
     border-radius: 25px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
-.palette-item img {
+.gradient-preview {
     width: 100%;
+    height: 150px;
     border-radius: 18px;
     display: block;
     margin-bottom: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
 }
 
-/* Specific Hex Tags */
 .color-tag {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.08);
-    color: #ddd;
+    background: rgba(255, 255, 255, 0.07);
+    color: #eee;
     padding: 5px 10px;
     margin: 3px;
     border-radius: 8px;
@@ -93,21 +107,20 @@ header { padding: 10px 0 30px 0; }
 }
 
 .color-tag:hover {
-    background: #00f2ff;
-    color: #000;
+    background: #df643f;
+    color: #fff;
     transform: scale(1.1);
 }
 
-/* Copy All Button */
 .copy-all-btn {
     display: block;
     width: 100%;
     margin-top: 15px;
     padding: 8px;
     border-radius: 12px;
-    border: 1px solid rgba(0, 242, 255, 0.3);
+    border: 1px solid rgba(223, 100, 63, 0.5);
     background: transparent;
-    color: #00f2ff;
+    color: #df643f;
     font-weight: bold;
     font-size: 12px;
     cursor: pointer;
@@ -115,17 +128,17 @@ header { padding: 10px 0 30px 0; }
 }
 
 .copy-all-btn:hover {
-    background: #00f2ff;
-    color: #000;
+    background: #df643f;
+    color: #fff;
 }
 
-#footer { text-align: center; color: rgba(255, 255, 255, 0.6); padding: 40px 0 20px; font-size: 0.9rem; }
+#footer { text-align: center; color: rgba(255, 255, 255, 0.5); padding: 40px 0 20px; font-size: 0.9rem; }
 
 #dev-badge {
     position: fixed; bottom: 20px; right: 20px;
-    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
     padding: 8px 15px; border-radius: 50px; font-size: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2); color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1); color: #ccc;
 }
 
 @media (max-width:1200px){ #main-page{column-count:4;} }
@@ -165,55 +178,52 @@ function copyToClipboard(text, msg) {
 }
 
 const palettes = [
-{img:"https://i.pinimg.com/736x/17/88/28/178828783a9fda5eebd1c98767c7d971.jpg",colors:"#043f34,#71967d,#afcab8,#b6e5d2"},
-{img:"https://i.pinimg.com/1200x/e7/3f/49/e73f490e2073da53b679f726d60cd473.jpg",colors:"#F2F3F4,#DED1C6,#A77693,#174871,#0F2D4D"},
-{img:"https://i.pinimg.com/736x/22/81/5d/22815db439d00b2d4e5672873e7cb495.jpg",colors:"#001D39,#0A4174,#49769F,#4E8EA2,#6EA2B3,#7BBDE8,#BDD8E9"},
-{img:"https://i.pinimg.com/736x/66/13/9a/66139aa104412777b055cfe422101768.jpg",colors:"#092A39,#1D4F67,#50849F,#7EA7BE,#A5C3D2"},
-{img:"https://i.pinimg.com/736x/a7/61/72/a761722964cb316ef9a90d251d7a3a10.jpg",colors:"#154559,#2B6278,#062A3B,#68A4BC"},
-{img:"https://i.pinimg.com/736x/55/4b/d0/554bd0ab445f0c9f0b15b50803d6ee59.jpg",colors:"#3E2723,#4E342E,#6D4C41,#8D6E63,#A1887F,#BCAAA4,#D7CCC8"},
-{img:"https://i.pinimg.com/1200x/6e/a9/c2/6ea9c20a44f7b642f04722b81a4dd8cf.jpg",colors:"#101916,#101511,#222922,#3D4633,#717476"},
-{img:"https://i.pinimg.com/736x/7a/17/f0/7a17f0e0b6defbedde0be7b99f50707f.jpg",colors:"#561C24,#6D2932,#C7B7A3,#E8D8C4"},
-{img:"https://i.pinimg.com/1200x/df/60/84/df60843afb8e47daa0dfcded7d81cb9f.jpg",colors:"#0D4966,#206080,#327499,#4588B1,#5DA1CC"},
-{img:"https://i.pinimg.com/1200x/b1/df/9e/b1df9ed539ebffc0ffd05398b1c23a48.jpg",colors:"#926447,#74492D,#562F25,#44221B,#341914"},
-{img:"https://i.pinimg.com/1200x/2a/56/bf/2a56bfd8ea048c3332a1f8339878b8df.jpg",colors:"#0D1D25,#104C64,#C6C6D0,#D59D80,#C0754D,#B6410F"},
-{img:"https://i.pinimg.com/1200x/15/dd/a0/15dda03bfcdef258c9d4df99199a23f0.jpg",colors:"#2D4354,#73766A,#FED7A5,#9E6752,#534145,#20212B"},
-{img:"https://i.pinimg.com/1200x/07/62/76/076276aef1e4090800b9486df7624937.jpg",colors:"#0E1F2F,#27425D,#87A7D0,#E2CAD8,#C18DB4,#0E1B48"},
-{img:"https://i.pinimg.com/736x/d4/87/f1/d487f141c829fb50c0e514177bec93a0.jpg",colors:"#190019,#2B124C,#522B5B,#854F6C,#DFB6B2,#FBE4DB"},
-{img:"https://i.pinimg.com/736x/3e/15/28/3e152816fa164be63cb9762f4fb27553.jpg",colors:"#1D1A39,#451952,#662549,#AE445A,#F38F5A,#E8BCB9"},
-{img:"https://i.pinimg.com/736x/75/45/c3/7545c350d8e085bac1922be44475585a.jpg",colors:"#051F20,#0B2B26,#163832,#235347,#8EB69B,#DAF1DE"},
-{img:"https://i.pinimg.com/736x/6e/3e/f8/6e3ef8ecad48d360a62976b848fafe9c.jpg",colors:"#161E2F,#242F49,#384358,#FFA586,#B51A2B,#541A2E"},
-{img:"https://i.pinimg.com/736x/1c/65/a3/1c65a309ee3a3a5ec8c6b9f14df65535.jpg",colors:"#3D1F1D,#A73728,#DF643F"},
-{img:"https://i.pinimg.com/736x/cb/fa/eb/cbfaeb34b3d9a2d83db9a09f1d140b9d.jpg",colors:"#293732,#949A9A,#6C826F,#90A68A,#C8D0C5"},
-{img:"https://i.pinimg.com/736x/f4/2e/a5/f42ea5686d4ab554667f2dee21544c13.jpg",colors:"#61683F,#757C53,#8B9269,#9FA67C,#B1B78F"},
-{img:"https://i.pinimg.com/736x/6e/b2/8e/6eb28eb47f03d2821f4e5f9f77d314a8.jpg",colors:"#D2F96F,#1F1F1F,#0E100A,#A2A2A2,#FFFFFF"},
-{img:"https://i.pinimg.com/736x/3b/2d/34/3b2d34e046d1bfe8610e3744eb9fd9a5.jpg",colors:"#221620,#44141A,#A32428,#FD8920,#4C8FC6,#272F46"},
-{img:"https://i.pinimg.com/736x/3e/40/9c/3e409cb2a4b0bbf8a59b614e7c1a3dc0.jpg",colors:"#003427,#246650,#829F82,#C6DBAC"},
-{img:"https://i.pinimg.com/736x/f6/ab/bd/f6abbd765bc5c022ad743adb75f961b7.jpg",colors:"#0C1519,#162127,#3A3534,#724B39,#CF9D78"},
-{img:"https://i.pinimg.com/736x/0f/f2/01/0ff201ecfcf1fa58611788bbffee2e04.jpg",colors:"#190019,#2B124C,#522B5B,#854F6C,#DFB6B2,#FBE4DB"},
-{img:"https://i.pinimg.com/736x/72/ae/df/72aedff99f574e18046af08d8691b6df.jpg",colors:"#222831,#283b48,#00a6c0,#D8d7cc"},
-{img:"https://i.pinimg.com/736x/d1/6e/3b/d16e3b1973631fcd0e2b6c32aef0bb0e.jpg",colors:"#A7EBF2,#54ACBF,#26658C,#023859,#011C40"},
-{img:"https://i.pinimg.com/1200x/2e/aa/c3/2eaac3bc9f199bcb184925ae6f3347c3.jpg",colors:"#2C3E50,#B08D57"},
-{img:"https://i.pinimg.com/736x/34/1e/3d/341e3d063b18bafac492c892aeaee488.jpg",colors:"#393939,#272727,#171717,#101010,#000000"},
-{img:"https://i.pinimg.com/736x/a5/3c/5a/a53c5af98147d649c7894ad8236eed25.jpg",colors:"#0E1D21,#122E34,#677EBA,#ABAFB5,#EDB4B3"},
-{img:"https://i.pinimg.com/736x/85/7f/0f/857f0f04091e54e1ebd0ea97cf512127.jpg",colors:"#006BBB,#30A0E0,#FFC973,#30B155"},
-{img:"https://i.pinimg.com/736x/c6/59/6a/c6596a67a08157eaa53c939d08cb081f.jpg",colors:"#00000,#ffffff,#df2531"},
-{img:"https://i.pinimg.com/1200x/fb/8d/08/fb8d08b8fcada0e29c1578db3bc11941.jpg",colors:"#362D25,#504736,#6A5E44,#8E7B59,#A59867"},
-{img:"https://i.pinimg.com/736x/a8/b4/b8/a8b4b82b7b8dc6fd4a53d8c9b424c254.jpg",colors:"#9D14FF,#670707,#C85BC6,#120917,#FFFFFF"}
+{colors:"#043f34,#71967d,#afcab8,#b6e5d2"},
+{colors:"#F2F3F4,#DED1C6,#A77693,#174871,#0F2D4D"},
+{colors:"#001D39,#0A4174,#49769F,#4E8EA2,#6EA2B3,#7BBDE8,#BDD8E9"},
+{colors:"#092A39,#1D4F67,#50849F,#7EA7BE,#A5C3D2"},
+{colors:"#154559,#2B6278,#062A3B,#68A4BC"},
+{colors:"#3E2723,#4E342E,#6D4C41,#8D6E63,#A1887F,#BCAAA4,#D7CCC8"},
+{colors:"#101916,#101511,#222922,#3D4633,#717476"},
+{colors:"#561C24,#6D2932,#C7B7A3,#E8D8C4"},
+{colors:"#0D4966,#206080,#327499,#4588B1,#5DA1CC"},
+{colors:"#926447,#74492D,#562F25,#44221B,#341914"},
+{colors:"#0D1D25,#104C64,#C6C6D0,#D59D80,#C0754D,#B6410F"},
+{colors:"#2D4354,#73766A,#FED7A5,#9E6752,#534145,#20212B"},
+{colors:"#0E1F2F,#27425D,#87A7D0,#E2CAD8,#C18DB4,#0E1B48"},
+{colors:"#190019,#2B124C,#522B5B,#854F6C,#DFB6B2,#FBE4DB"},
+{colors:"#1D1A39,#451952,#662549,#AE445A,#F38F5A,#E8BCB9"},
+{colors:"#051F20,#0B2B26,#163832,#235347,#8EB69B,#DAF1DE"},
+{colors:"#161E2F,#242F49,#384358,#FFA586,#B51A2B,#541A2E"},
+{colors:"#3D1F1D,#A73728,#DF643F"},
+{colors:"#293732,#949A9A,#6C826F,#90A68A,#C8D0C5"},
+{colors:"#61683F,#757C53,#8B9269,#9FA67C,#B1B78F"},
+{colors:"#D2F96F,#1F1F1F,#0E100A"},
+{colors:"#221620,#44141A,#A32428,#FD8920,#4C8FC6,#272F46"},
+{colors:"#003427,#246650,#829F82,#C6DBAC"},
+{colors:"#0C1519,#162127,#3A3534,#724B39,#CF9D78"},
+{colors:"#190019,#2B124C,#522B5B,#854F6C,#DFB6B2,#FBE4DB"},
+{colors:"#222831,#283b48,#00a6c0,#D8d7cc"},
+{colors:"#A7EBF2,#54ACBF,#26658C,#023859,#011C40"},
+{colors:"#2C3E50,#B08D57"},
+{colors:"#393939,#272727,#171717,#101010,#000000"},
+{colors:"#0E1D21,#122E34,#677EBA,#ABAFB5,#EDB4B3"},
+{colors:"#006BBB,#30A0E0,#FFC973,#30B155"},
+{colors:"#000000,#df2531"},
+{colors:"#362D25,#504736,#6A5E44,#8E7B59,#A59867"},
+{colors:"#9D14FF,#C85BC6,#120917,#FFFFFF"}
 ];
 
 const container = document.getElementById("main-page");
 
 palettes.forEach(p => {
-    if(!p.img) return;
     const card = document.createElement("div");
     card.className = "palette-item";
 
-    // Image
-    const img = document.createElement("img");
-    img.src = p.img;
-    img.loading = "lazy";
+    const gradientBox = document.createElement("div");
+    gradientBox.className = "gradient-preview";
+    gradientBox.style.background = `linear-gradient(135deg, ${p.colors})`;
     
-    // Chips Container
     const tagsWrapper = document.createElement("div");
     const arr = p.colors.split(",");
     arr.forEach(c => {
@@ -226,13 +236,12 @@ palettes.forEach(p => {
         tagsWrapper.appendChild(span);
     });
 
-    // Copy All Button
     const allBtn = document.createElement("button");
     allBtn.className = "copy-all-btn";
     allBtn.textContent = "COPY ALL CODES";
     allBtn.onclick = () => copyToClipboard(p.colors, "All colors copied!");
 
-    card.appendChild(img);
+    card.appendChild(gradientBox);
     card.appendChild(tagsWrapper);
     card.appendChild(allBtn);
     container.appendChild(card);
