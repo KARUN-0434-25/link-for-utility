@@ -16,16 +16,7 @@ html, body {
 body {
     /* Less black, more "Smoky Orange & Charcoal" */
     background-color: #1a1514; 
-    background-image: 
-        /* Distinct Black Grid Lines */
-        linear-gradient(rgba(0, 0, 0, 0.6) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.6) 1px, transparent 1px),
-        /* Warm Ambient Glows */
-        radial-gradient(circle at 10% 20%, rgba(167, 55, 40, 0.3), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(223, 100, 63, 0.25), transparent 40%),
-        /* Base Gradient */
-        linear-gradient(135deg, #1f1c1b 0%, #3d1f1d 100%);
-    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6) 1px, transparent 1px),linear-gradient(90deg, rgba(0, 0, 0, 0.6) 1px, transparent 1px),radial-gradient(circle at 10% 20%, rgba(167, 55, 40, 0.3), transparent 40%),radial-gradient(circle at 90% 80%, rgba(223, 100, 63, 0.25), transparent 40%),linear-gradient(135deg, #1f1c1b 0%, #3d1f1d 100%);
     background-size: 45px 45px, 45px 45px, 100% 100%, 100% 100%, 100% 100%;
     background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
     background-position: center;
@@ -35,13 +26,12 @@ body {
     flex-direction: column;
 }
 
-/* Toast Notification */
 #toast {
     position: fixed;
     top: -60px;
     left: 50%;
     transform: translateX(-50%);
-    background: #df643f; /* Matched to theme */
+    background: #df643f; 
     color: #fff;
     padding: 10px 25px;
     border-radius: 50px;
@@ -76,7 +66,7 @@ header { padding: 10px 0 30px 0; }
     break-inside: avoid;
     margin-bottom: 20px;
     text-align: center;
-    background: rgba(35, 30, 30, 0.6); /* Semi-transparent charcoal */
+    background: rgba(35, 30, 30, 0.6); 
     padding: 15px;
     border-radius: 25px;
     backdrop-filter: blur(12px);
@@ -140,7 +130,10 @@ header { padding: 10px 0 30px 0; }
     padding: 8px 15px; border-radius: 50px; font-size: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1); color: #ccc;
 }
-
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
 @media (max-width:1200px){ #main-page{column-count:4;} }
 @media (max-width:768px){ #main-page{column-count:2;} }
 @media (max-width:480px){ #main-page{column-count:1;} }
@@ -211,7 +204,7 @@ const palettes = [
 {colors:"#006BBB,#30A0E0,#FFC973,#30B155"},
 {colors:"#000000,#df2531"},
 {colors:"#362D25,#504736,#6A5E44,#8E7B59,#A59867"},
-{colors:"#9D14FF,#C85BC6,#120917,#FFFFFF"}
+{colors:"#9D14FF,#C85BC6,#120917,#111111"}
 ];
 
 const container = document.getElementById("main-page");
@@ -245,6 +238,21 @@ palettes.forEach(p => {
     card.appendChild(tagsWrapper);
     card.appendChild(allBtn);
     container.appendChild(card);
+});
+
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+document.addEventListener("dragstart", e => e.preventDefault());
+
+document.addEventListener("keydown", function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && ["u","s","c","x","a","i"].includes(e.key.toLowerCase())) ||
+        (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+    }
 });
 </script>
 

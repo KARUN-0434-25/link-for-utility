@@ -201,7 +201,7 @@
             z-index: 9999;
         }
         #developer-badge a { color: var(--roaming-cyan-bright); text-decoration: none; font-weight: 700; }
-
+        body {user-select: none;-webkit-user-select: none;}
         @media (max-width: 600px) {
             #nav-container { flex-direction: column; gap: 1.5rem; }
             #image-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -244,4 +244,19 @@
     </div>
 
 </body>
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+document.addEventListener("dragstart", e => e.preventDefault());
+
+document.addEventListener("keydown", function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && ["u","s","c","x","a","i"].includes(e.key.toLowerCase())) ||
+        (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+    }
+});
+</script>
 </html>
